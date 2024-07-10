@@ -51,14 +51,24 @@ const catProducts = [{
 }];
 
 catProducts.forEach((catProduct)=>{
-  const html = `
+  //const html = `
+  //<div class="cat-preview" >
+  //  <img class = "thumbnail" src="${catProduct.thumbnail}">
+  //  <div class ="thumbnail-mini-row">
+  //    <img class = "thumbnail-mini" src="${catProduct.thumbnailMini}">
+  //  </div>  
+  //</div>
+  //`;
+
+  var html = `
   <div class="cat-preview" >
     <img class = "thumbnail" src="${catProduct.thumbnail}">
-    <div class ="thumbnail-mini-row">
-      <img class = "thumbnail-mini" src="${catProduct.thumbnailMini}">
-    </div>  
-  </div>
-  `;
+    <div class ="thumbnail-mini-row">`;
 
+  for(let i = 0; i< catProduct.thumbnailMini.length;i++){
+    html = html.concat("\n      <img class = \"thumbnail-mini\" src=\"${" + catProduct.thumbnailMini[i] + "}\">");
+  }
+
+  html = html.concat("\n    </div>\n  </div>");
   console.log(html);
 });
