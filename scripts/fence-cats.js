@@ -50,25 +50,22 @@ const catProducts = [{
   ['images/wary-cat2.jpg','images/wary-cat3.jpg']
 }];
 
-catProducts.forEach((catProduct)=>{
-  //const html = `
-  //<div class="cat-preview" >
-  //  <img class = "thumbnail" src="${catProduct.thumbnail}">
-  //  <div class ="thumbnail-mini-row">
-  //    <img class = "thumbnail-mini" src="${catProduct.thumbnailMini}">
-  //  </div>  
-  //</div>
-  //`;
+let catProductsHTML = '';
 
-  var html = `
-  <div class="cat-preview" >
-    <img class = "thumbnail" src="${catProduct.thumbnail}">
-    <div class ="thumbnail-mini-row">`;
+catProducts.forEach((catProduct)=>{
+  catProductsHTML += `
+    <div class="cat-preview" >
+      <img class = "thumbnail" src="${catProduct.thumbnail}">
+      <div class ="thumbnail-mini-row">`;
 
   for(let i = 0; i< catProduct.thumbnailMini.length;i++){
-    html = html.concat("\n      <img class = \"thumbnail-mini\" src=\"${" + catProduct.thumbnailMini[i] + "}\">");
+    catProductsHTML = catProductsHTML.concat(`\n        <img class = \"thumbnail-mini\" src=\"${catProduct.thumbnailMini[i]}\">`);
   }
 
-  html = html.concat("\n    </div>\n  </div>");
-  console.log(html);
+  catProductsHTML = catProductsHTML.concat("\n      </div>\n    </div>");
 });
+
+console.log(catProductsHTML);
+
+document.querySelector('.js-catProducts-grid').
+innerHTML = catProductsHTML;
